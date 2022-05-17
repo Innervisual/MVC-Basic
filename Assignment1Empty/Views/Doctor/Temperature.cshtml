@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewData["Title"] = "Temperature";
+}
+
+
+<h1>Fever or not</h1>
+<form method="post" asp-controller="Doctor" asp-action="FeverCheck">
+    <label>Enter your temperature (in degree Celcius) to check if you have fever or not:</label><br>
+    <input type="text" name="Temp"><br>
+</form>

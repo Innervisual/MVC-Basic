@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+    <h2>@ViewBag.Title</h2>
+    <div>
+        <h1>@Html.ActionLink("Index", "Index", "Home")</h1>
+        <h1>@Html.ActionLink("Test", "Test", "Home")</h1>
+        <ul>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contacts", "Contacts", "Home")</li>
+            <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
+            <li>@Html.ActionLink("guessingGameView", "guessingGameView", "GuessingGame")</li>
+            <li><a asp-controller="Doctor" asp-action="Temperature">Temperature</a></li>
+        </ul>
+        <section>
+            @RenderBody()
+        </section>
+        <footer>
+            @DateTime.Now JP
+            <img src="https://www.bing.com/th?id=OIP.7LNXRUIblBnFCJ_LQni8IwHaFj&w=288&h=216&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" />
+        </footer>
+    </div>
+</body>
+</html>
