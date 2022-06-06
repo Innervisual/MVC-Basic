@@ -7,7 +7,7 @@ namespace Assignment1Empty.Controllers
     public class GuessingGame : Controller
     {
 
-        [HttpGet]
+
         public IActionResult guessingGameView()
         {
             int generatedNumber = GenerateNumber.GenerateRandomNumber();
@@ -19,30 +19,15 @@ namespace Assignment1Empty.Controllers
         public IActionResult guessingGameView(int guessedNumber)
         {
             int generatedRandomNumber = (int)HttpContext.Session.GetInt32("RandomNumber");
-            if (guessedNumber==generatedRandomNumber)
+            string result = Calculate.guessNumber(guessedNumber, generatedRandomNumber);
+            ViewBag.LinkableId=result;
+            if (result == "You won!")
             {
-                return RedirectToAction("guessingGamePost");
+                int generatedNumber = GenerateNumber.GenerateRandomNumber();
+                HttpContext.Session.SetInt32("RandomNumber", generatedNumber);
             }
+            return View();
 
-            else
-            {
-                if (guessedNumber>100 || guessedNumber<=0)
-                {
-                    ViewBag.LinkableId="Invalid input";
-                }
-
-                else if (guessedNumber<generatedRandomNumber)
-                {
-                    ViewBag.LinkableId="To low";
-                }
-
-                else if (guessedNumber>generatedRandomNumber)
-                {
-                    ViewBag.LinkableId="To high";
-                }
-
-                return View();
-            }
         }
 
         public IActionResult guessingGamePost()

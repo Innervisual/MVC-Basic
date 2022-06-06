@@ -10,9 +10,9 @@ namespace Assignment1Empty.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult FeverCheck(int Temp)
+        public IActionResult Temperature(int Temp)
         {
-            string result = Calculate.CheckIfFever(Temp);
+            string[] result = Calculate.CheckIfFever(Temp);
             ViewBag.LinkableId=result;
             return View();
         }
